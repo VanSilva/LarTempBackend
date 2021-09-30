@@ -5,8 +5,8 @@ const authorization = require('../app/middlewares/authorization');
 
 module.exports = (server, routes, prefix = '/city') => {
   logger.info('Routes - City - OK');
-  routes.use(authorization);
   routes.get('/', CityController.getAll);
+  routes.use(authorization);
   routes.post('/create', CityController.create);
   routes.put('/update/:id', CityController.update);
   routes.delete('/delete/:id', CityController.delete);
