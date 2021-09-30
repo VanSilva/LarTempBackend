@@ -33,7 +33,9 @@ class PersonAuthenticationController {
       return res.status(200).send({
         msg: 'Authention success',
         token,
-        time
+        time,
+        id: resultResponse.id,
+        eLar: resultResponse.eLar
       });
     } catch (err) {
       return res.status(400).json({ error: 'Person authentication failed' });
