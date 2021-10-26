@@ -2,12 +2,13 @@ import 'dotenv/config';
 import 'express-async-errors';
 import express from 'express';
 import Youch from 'youch';
-
+import cors from 'cors'
 import routes from './routes/index.routes';
 
 // Uncomment this line to enable database access
 // --------
 import './database';
+
 
 class App {
   constructor() {
@@ -20,6 +21,7 @@ class App {
 
   middlewares() {
     this.server.use(express.json());
+    this.server.use(cors());
   }
 
   routes() {
