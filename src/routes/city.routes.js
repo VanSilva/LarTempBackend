@@ -7,6 +7,7 @@ module.exports = (server, routes, prefix = '/city') => {
   logger.info('Routes - City - OK');
   routes.get('/', CityController.getAll);
   routes.use(authorization);
+  routes.get('/:id', CityController.get);
   routes.post('/create', CityController.create);
   routes.put('/update/:id', CityController.update);
   routes.delete('/delete/:id', CityController.delete);

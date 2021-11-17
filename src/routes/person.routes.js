@@ -7,6 +7,7 @@ module.exports = (server, routes, prefix = '/person') => {
   logger.info('Routes - Person - OK');
   routes.post('/create', PersonController.create);
   routes.use(authorization);
+  routes.get('/:id', PersonController.get);
   routes.get('/', PersonController.getAll);
   routes.put('/update/:id', PersonController.update);
   routes.delete('/delete/:id', PersonController.delete);

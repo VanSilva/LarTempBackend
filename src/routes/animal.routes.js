@@ -7,6 +7,7 @@ module.exports = (server, routes, prefix = '/animal') => {
   logger.info('Routes - Animal - OK');
   routes.use(authorization);
   routes.get('/', AnimalController.getAll);
+  routes.get('/:id', AnimalController.get);
   routes.post('/create', AnimalController.create);
   routes.put('/update/:id', AnimalController.update);
   routes.delete('/delete/:id', AnimalController.delete);
