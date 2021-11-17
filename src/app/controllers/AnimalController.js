@@ -7,6 +7,16 @@ import AnimalTypeRepository from '../../repository/animalType.repository';
 import AnimalVaccineRepository from '../../repository/animalVaccine.repository';
 
 class AnimalController {
+  async get(req, res) {
+    logger.info('AnimalRepository - Show - OK');
+
+    const { id } = req.params;
+
+    const animal = await AnimalRepository.getAnimal(id);
+
+    return res.status(httpCodes.OK).send(animal);
+  }
+
   async getAll(req, res) {
     logger.info('AnimalController - Index - OK');
 

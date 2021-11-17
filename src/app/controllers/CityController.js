@@ -3,6 +3,16 @@ import logger from '../../helpers/logger';
 import CityRepository from '../../repository/city.repository';
 
 class CityController {
+  async get(req, res) {
+    logger.info('CityRepository - Show - OK');
+
+    const { id } = req.params;
+
+    const city = await CityRepository.getCity(id);
+
+    return res.status(httpCodes.OK).send(city);
+  }
+
   async getAll(req, res) {
     logger.info('CityController - Index - OK');
 

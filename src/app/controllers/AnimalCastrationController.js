@@ -4,6 +4,16 @@ import logger from '../../helpers/logger';
 import AnimalCastrationRepository from '../../repository/animalCastration.repository';
 
 class AnimalCastrationController {
+  async get(req, res) {
+    logger.info('AnimalCastrationRepository - Show - OK');
+
+    const { id } = req.params;
+
+    const animalCastration = await AnimalCastrationRepository.getAnimalCastration(id);
+
+    return res.status(httpCodes.OK).send(animalCastration);
+  }
+
   async getAll(req, res) {
     logger.info('AnimalCastrationController - Index - OK');
 

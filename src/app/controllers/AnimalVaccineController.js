@@ -3,6 +3,16 @@ import logger from '../../helpers/logger';
 import AnimalVaccineRepository from '../../repository/animalVaccine.repository';
 
 class AnimalVaccineController {
+  async get(req, res) {
+    logger.info('AnimalVaccineRepository - Show - OK');
+
+    const { id } = req.params;
+
+    const animalVaccine = await AnimalVaccineRepository.getAnimalVaccine(id);
+
+    return res.status(httpCodes.OK).send(animalVaccine);
+  }
+
   async getAll(req, res) {
     logger.info('AnimalVaccineController - Index - OK');
 

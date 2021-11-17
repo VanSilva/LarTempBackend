@@ -3,6 +3,16 @@ import logger from '../../helpers/logger';
 import AnimalTypeRepository from '../../repository/animalType.repository';
 
 class AnimalTypeController {
+  async get(req, res) {
+    logger.info('AnimalTypeController - Show - OK');
+
+    const { id } = req.params;
+
+    const animalType = await AnimalTypeRepository.getAnimalType(id);
+
+    return res.status(httpCodes.OK).send(animalType);
+  }
+
   async getAll(req, res) {
     logger.info('AnimalTypeController - Index - OK');
 

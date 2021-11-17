@@ -4,6 +4,16 @@ import logger from '../../helpers/logger';
 import AnimalHeightRepository from '../../repository/animalHeight.repository';
 
 class AnimalHeightController {
+  async get(req, res) {
+    logger.info('AnimalHeightRepository - Show - OK');
+
+    const { id } = req.params;
+
+    const animalHeight = await AnimalHeightRepository.getAnimalHeight(id);
+
+    return res.status(httpCodes.OK).send(animalHeight);
+  }
+
   async getAll(req, res) {
     logger.info('AnimalHeightController - Index - OK');
 

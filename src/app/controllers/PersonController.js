@@ -4,6 +4,16 @@ import CityRepository from '../../repository/city.repository';
 import PersonRepository from '../../repository/person.repository';
 
 class PersonController {
+  async get(req, res) {
+    logger.info('PersonController - Show - OK');
+
+    const { id } = req.params;
+
+    const person = await PersonRepository.getPerson(id);
+
+    return res.status(httpCodes.OK).send(person);
+  }
+
   async getAll(req, res) {
     logger.info('PersonController - Index - OK');
 
